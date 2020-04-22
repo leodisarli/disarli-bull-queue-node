@@ -1,0 +1,22 @@
+version: "3"
+services:
+  disarli-bull-queue-node-redis:
+    hostname: disarli-bull-queue-node-redis
+    container_name: disarli-bull-queue-node-redis
+    image: leosarli/redis-pubsub
+    sysctls:
+      net.core.somaxconn: 1024
+    ports:
+      - "6379:6379"
+    expose:
+      - 6379
+    restart: always
+  disarli-bull-queue-node-commander:
+    container_name: disarli-bull-queue-node-commander
+    hostname: disarli-bull-queue-node-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+    - REDIS_HOSTS=local:disarli-bull-queue-node-redis:6379
+    ports:
+    - "8081:8081"  

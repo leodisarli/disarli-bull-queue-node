@@ -1,0 +1,13 @@
+.npm
+.scannerwork
+.vscode
+example/output.txt
+jspm_packages/
+node_modules/
+npm-debug.log*
+storage/*
+storage/**/**
+!/**/.gitkeep
+!/storage/bucket
+!/storage/local
+.env
